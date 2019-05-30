@@ -1,7 +1,7 @@
 import re
 import math
 
-input_file = open("problem_small.txt", "r")
+input_file = open("problem_big.txt", "r")
 
 coordinates=[]
 
@@ -28,7 +28,7 @@ for coordinate in coordinates:
         most_isolated_coordinate = coordinate
     print(coordinate[0])
 
-output_file = open("problem_small_output.txt", "w")
+output_file = open("problem_big_output.txt", "w")
 
 Lines = ["--------------\n", "Most Isolated Point\n", "place" + str(most_isolated_coordinate[0]) + "\n", "--------------\n", "Coordinates\n", "(" + str(most_isolated_coordinate[1])+ "," + str(most_isolated_coordinate[2]) + ")\n", "--------------\n",]
 
