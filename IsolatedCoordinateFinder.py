@@ -1,35 +1,37 @@
 import re
 import math
 
-file = open("problem_small.txt", "r")
+input_file = open("problem_big.txt", "r")
 
 coordinates=[]
 
 #Pulls coordinates from each line of the text document
-for line in file:
+for line in input_file:
     coordinate = (re.findall('\d+', line ))
     coordinate[1] = int(coordinate[1])
     coordinate[2] = int(coordinate[2])
     coordinates.append(coordinate)
 
-furthestdist = 0
+input_file.close()
+
+furthest_distance = 0
 
 #compares coordinate with the rest of the coordinates on the array
 for coordinate in coordinates:
-    shortestdist= 1000000000
-    for comparisoncoord in coordinates:
-        dist = math.sqrt(math.pow((comparisoncoord[1]-coordinate[1]),2)+ math.pow((comparisoncoord[2]-coordinate[2]),2))
-        if dist != 0:
-            if dist < shortestdist:
-                shortestdist = dist
-    if shortestdist > furthestdist:
-        furthestdist = shortestdist
-        mostisolatedcoord = coordinate
+    shortest_distance = 999999999999999
+    for comparison_coordinates in coordinates:
+        distance = math.sqrt(((comparison_coordinates[1]-coordinate[1])**2)+((comparison_coordinates[2]-coordinate[2])**2))
+        if (distance < shortest_distance) & (distance != 0):
+            shortest_distance = distance
+    if shortest_distance > furthest_distance:
+        furthest_distance = shortest_distance
+        most_isolated_coordinate = coordinate
     print(coordinate[0])
 
+output_file = open("problem_big_output.txt", "w")
 
+Lines = ["--------------\n", "Most Isolated Point\n", "place" + str(most_isolated_coordinate[0]) + "\n", "--------------\n", "Coordinates\n", "(" + str(most_isolated_coordinate[1])+ "," + str(most_isolated_coordinate[2]) + ")\n", "--------------\n",]
 
-print(furthestdist)
-print(mostisolatedcoord)
+output_file.writelines(Lines)
 
-file.close()
+output_file.close()
