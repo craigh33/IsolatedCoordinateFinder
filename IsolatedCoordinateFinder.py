@@ -6,9 +6,6 @@
 #Library Dependencies
 import re
 import math
-import pprint
-
-pp = pprint.PrettyPrinter(indent=4)
 
 #Finds the distance between two points
 def distance_between_points(point1, point2):
